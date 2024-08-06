@@ -1,0 +1,121 @@
+<!-- Section -->
+<div class="ceremonies-section">
+  <!-- Header -->
+  <div class="header">
+    <span class="title">تشریفات</span>
+    <mat-icon class="back-arrow">keyboard_backspace</mat-icon>
+  </div>
+  <p class="page-title">ایجاد درخواست جدید</p>
+  <!-- End Header -->
+
+  <!-- Stepper -->
+  <div class="stepper">
+    <mat-stepper [linear]="false" #stepper>
+
+      <mat-step [stepControl]="firstFormGroup">
+        <form class="form-section" [formGroup]="firstFormGroup">
+          <ng-template matStepLabel></ng-template>
+          <p class="field-label">تاریخ</p>
+          <mat-form-field appearance="fill" class="full-width center-align-label">
+            <mat-label>روز / ماه / سال</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>calendar_month</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <p class="field-label">زمان</p>
+          <mat-form-field appearance="fill" class="full-width center-align-label">
+            <mat-label>دقیقه : ساعت</mat-label>
+            <input matInput mask="00:00" placeholder="00:00" inputmode="numeric">
+            <mat-icon matSuffix>access_time_filled</mat-icon>
+          </mat-form-field>
+
+          <p class="field-label">مکان</p>
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>لطفا انتخاب کنید</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let level of levels" [value]="level.value">
+                {{ level.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>chevron_left</mat-icon>
+          </mat-form-field>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup">
+        <form class="form-section" [formGroup]="secondFormGroup">
+          <p class="field-label">سطح سازمانی میهمان</p>
+          <mat-form-field appearance="fill" class="full-width center-align-label">
+            <mat-label>لطفا انتخاب کنید</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let level of levels" [value]="level.value">
+                {{ level.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>chevron_left</mat-icon>
+          </mat-form-field>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="thirdFormGroup">
+        <form class="form-section" [formGroup]="thirdFormGroup">
+          <p class="field-label">امکانات درخواستی</p>
+
+          <div class="feature-section">
+            <div class="feature-list">
+              <div class="feature-item" *ngFor="let feature of features">
+                <div class="feature-icon">
+                  <span class="material-symbols-outlined">{{ feature.icon }}</span>
+                </div>
+                <span class="feature-title">{{ feature.title }}</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="field-label">توضیحات</p>
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>لطفا توضیح دهید...</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>attach_file_add</mat-icon>
+          </mat-form-field>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="fourthFormGroup">
+        <form class="form-section" [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel></ng-template>
+          <p class="field-label">نام میهمان</p>
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>لطفا نام میهمان را وارد کنید</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <p class="field-label">نام میزبان</p>
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>لطفا نام میزبان را وارد کنید</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <p class="field-label">تعداد میهمان</p>
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>لطفا تعداد میهمانان را وارد کنید</mat-label>
+            <input matInput type="number" inputmode="numeric">
+          </mat-form-field>
+        </form>
+      </mat-step>
+    </mat-stepper>
+  </div>
+  <!-- End Stepper -->
+</div>
+<!-- End Section -->
+
+<!-- Manage Stepper Footer -->
+<div class="manage-steps-footer">
+  <button *ngIf="currentStep > 1" class="btn previous-btn" mat-button (click)="previousStep()">مرحله قبل</button>
+  <button *ngIf="totalSteps != currentStep" class="btn next-btn" mat-button (click)="nextStep()">مرحله بعد</button>
+  <button *ngIf="totalSteps == currentStep" class="btn preview-btn" mat-button>پیش نمایش</button>
+</div>
+<!-- End Manage Stepper Footer -->

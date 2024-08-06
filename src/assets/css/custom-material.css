@@ -1,0 +1,154 @@
+/* ---------- CUSTOM MATERILA COMPONENTS ---------- */
+::ng-deep .mat-step-header:hover:not([aria-disabled]) {
+  background-color: transparent !important;
+}
+
+::ng-deep .mat-step-header .mat-step-header-ripple,
+::ng-deep .mat-step-header .mat-stepper-horizontal-line {
+  display: none !important;
+}
+
+::ng-deep .mat-step-header {
+  background: var(--white-color)!important;
+  pointer-events: none;
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  border-radius: 10px;
+  height: 50px;
+  width: 70px;
+  background-color: var(--very-light-blue);
+  color: var(--sky-blue);
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: var(--light-blue-color);
+  color: var(--ocean-blue);
+  font-weight: bold;
+}
+
+::ng-deep .mat-horizontal-stepper-header,
+::ng-deep .mat-horizontal-content-container {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container .mat-stepper-horizontal-line {
+  display: none !important;
+}
+
+::ng-deep .manage-steps-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 90px;
+  background-color: var(--light-lavender);
+  padding: 23px 38px;
+  border-radius: 15px 15px 0 0;
+}
+
+::ng-deep .center-align-label .mdc-notched-outline__notch {
+  width: 100%;
+  text-align: center;
+}
+
+::ng-deep .mdc-notched-outline .mdc-notched-outline__leading,
+::ng-deep .mdc-notched-outline .mdc-notched-outline__notch,
+::ng-deep .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: transparent !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  background-color: var(--light-sky-blue) !important;
+  border-radius: 10px !important;
+}
+
+::ng-deep .mat-mdc-form-field-flex {
+  display: none;
+}
+
+::ng-deep .mdc-button__label {
+  letter-spacing: 0;
+}
+
+::ng-deep .mat-step-icon-selected::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -11px;
+  width: 11px;
+  height: 50px;
+  background-image: url(/assets/images/left-arrow.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+::ng-deep .mat-step-icon-content span {
+  font-size: 25px;
+}
+
+::ng-deep .mat-step-header:last-child .mat-step-icon-selected::after {
+  content: none;
+}
+
+::ng-deep .mat-mdc-select-arrow-wrapper {
+  opacity: 0;
+}
+
+::ng-deep .mat-mdc-option .mdc-list-item__primary-text {
+  font-family: 'iransans', sans-serif !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before,
+::ng-deep .mdc-line-ripple.mdc-line-ripple--active::before {
+  border-bottom-color: transparent!important;
+}
+
+::ng-deep .mdc-line-ripple::before,
+::ng-deep .mdc-line-ripple::after {
+  border-bottom-width: 0!important;
+}
+
+::ng-deep .mat-mdc-form-field-focus-overlay {
+  background-color: var(--light-sky-blue) !important;
+}
+
+::ng-deep .center-align-label .mdc-floating-label.mat-mdc-floating-label {
+  width: 100%;
+  text-align: center;
+}
+
+::ng-deep .center-align-label .mdc-floating-label.mdc-floating-label--float-above {
+  width: auto!important;
+  text-align: unset!important;
+}
+
+mat-icon {
+  color: #8FA8FD;
+}
+
+mat-label {
+  color: var(--light-periwinkle);
+  font-size: 17px;
+}
+
+.mat-stepper-horizontal {
+  background-color: transparent !important;
+}
+
+.mat-step-icon {
+  border-radius: 10px;
+  height: 50px;
+  width: 70px;
+  background-color: var(--very-light-blue) !important;
+  color: var(--sky-blue) !important;
+}
+
+.back-arrow {
+  color: var(--black-color);
+  width: 45px;
+  font-size: 30px;
+}

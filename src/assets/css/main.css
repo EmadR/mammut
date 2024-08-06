@@ -1,0 +1,40 @@
+:root {
+  --primary-color: #405AA9;
+  --second-color: #00164D;
+  --light-blue-color: #B2E0FF;
+  --ocean-blue: #007FB0;
+  --deep-ocean-blue: #00658C;
+  --light-lavender: #EBEDFF;
+  --light-sky-blue: #EAF5FF;
+  --black-color: #000;
+  --white-color: #fff;
+  --light-periwinkle: #B5C4FF;
+  --very-light-blue: #E4F3FF;
+  --sky-blue: #50B5EB;
+}
+
+@font-face {
+  font-family: 'iransans';
+  src: url("../fonts/iransans.woff2") format('woff2');
+  font-weight: normal;
+}
+
+* {
+  font-family: 'iransans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  max-width: 425px;
+  display: block;
+  height: 100vh;
+  overflow: auto;
+  margin: auto;
+  background: var(--white-color);
+}
+
+.black-color {
+  color: var(--black-color) !important;
+}

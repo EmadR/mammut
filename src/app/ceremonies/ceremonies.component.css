@@ -1,0 +1,125 @@
+@import "src/assets/css/custom-material.css";
+
+.ceremonies-section {
+  position: relative;
+  height: 100vh;
+  overflow: auto;
+  padding: 75px 28px 110px;
+}
+
+.ceremonies-section .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: 30px;
+}
+
+.ceremonies-section .header .title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.page-title {
+  color: var(--second-color);
+  font-size: 15px;
+  font-weight: bold;
+  margin-block-end: 30px;
+}
+
+.form-section {
+  padding-block-start: 42px;
+}
+
+.manage-steps-footer .btn {
+  width: 140px;
+  height: 45px;
+  border-radius: 10px;
+}
+
+.manage-steps-footer .next-btn {
+  background: var(--second-color);
+  color: var(--white-color);
+  margin-inline-start: auto;
+}
+
+.manage-steps-footer .previous-btn {
+  background: var(--light-periwinkle);
+  color: var(--second-color);
+  margin-inline-end: auto;
+}
+
+.manage-steps-footer .preview-btn {
+  background: #5A73C4;
+  color: var(--white-color);
+  margin-inline-start: auto;
+}
+
+.field-label {
+  font-size: 17px;
+  color: var(--deep-ocean-blue);
+  margin-bottom: 14px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.feature-section {
+  padding-inline: 24px;
+  margin-block-end: 21px;
+}
+
+.feature-section .feature-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 7px 11px;
+}
+
+.feature-section .feature-list .feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 4px;
+  cursor: pointer;
+}
+
+.feature-section .feature-list .feature-item .feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  max-width: 65px;
+  background-color: #F3F3FF;
+  border-radius: 10px;
+}
+
+.feature-section .feature-list .feature-item .feature-icon span {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+}
+
+.feature-section .feature-list .feature-item .feature-title {
+  font-size: 12px;
+  color: var(--primary-color);
+}
+
+.center-align-label .mat-form-field-label {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (max-width: 320px) {
+  .manage-steps-footer {
+    padding: 23px 14px;
+  }
+
+  ::ng-deep .mat-step-header .mat-step-icon {
+    width: 55px;
+  }
+}
+
