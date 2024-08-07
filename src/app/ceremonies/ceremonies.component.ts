@@ -99,7 +99,7 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
     this.fourthFormGroup = this._formBuilder.group({
       guestName: [null, Validators.required],
       hostName: [null, Validators.required],
-      guestCount: [null, Validators.required],
+      guestCount: [null, [Validators.required, Validators.min(1)]],
     });
   }
 
