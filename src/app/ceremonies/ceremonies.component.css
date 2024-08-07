@@ -95,11 +95,21 @@
   max-width: 65px;
   background-color: #F3F3FF;
   border-radius: 10px;
+  transition: .3s ease-in;
+}
+
+.feature-section .feature-list .feature-item.selected .feature-icon {
+  background-color: var(--second-color);
 }
 
 .feature-section .feature-list .feature-item .feature-icon span {
   color: var(--primary-color);
   font-size: 1.8rem;
+  transition: .3s ease-in;
+}
+
+.feature-section .feature-list .feature-item.selected .feature-icon span {
+  color: #fff;
 }
 
 .feature-section .feature-list .feature-item .feature-title {

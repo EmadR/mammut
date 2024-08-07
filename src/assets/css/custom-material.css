@@ -86,7 +86,7 @@
   background-repeat: no-repeat;
 }
 
-::ng-deep .mat-step-icon-content span {
+::ng-deep .mat-step-icon-content {
   font-size: 25px;
 }
 
@@ -130,9 +130,14 @@ mat-icon {
   color: #8FA8FD;
 }
 
-mat-label {
+::ng-deep .mdc-floating-label mat-label {
   color: var(--light-periwinkle);
   font-size: 17px;
+}
+
+::ng-deep .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label mat-label,
+::ng-deep .mdc-floating-label .mat-mdc-form-field-required-marker {
+  color: #f44336 !important;
 }
 
 .mat-stepper-horizontal {
@@ -151,4 +156,9 @@ mat-label {
   color: var(--black-color);
   width: 45px;
   font-size: 30px;
+}
+
+::ng-deep .mat-step-icon::before {
+  content: attr(data-step) !important; /* شماره مرحله را نشان می‌دهد */
+  font-size: 18px; /* سایز شماره */
 }
