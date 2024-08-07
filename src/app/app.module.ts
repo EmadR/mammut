@@ -14,7 +14,20 @@ import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from "@angular/mater
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSelectModule} from "@angular/material/select";
 import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
-import {CUSTOM_DATE_FORMATS, JalaliMomentDateAdapter} from "./data/utils/jalali-adapter";
+import {JalaliMomentDateAdapter} from "./data/utils/jalali-date-adapter";
+
+export const CUSTOM_DATE_FORMATS = {
+  parse: {
+    dateInput: 'YYYY/MM/DD',
+  },
+  display: {
+    dateInput: 'YYYY/MM/DD',
+    monthYearLabel: 'MMM YYYY',
+    monthYearA11yLabel: 'MMM YYYY',
+    yearLabel: 'YYYY',
+    yearA11yLabel: 'YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -42,8 +55,8 @@ import {CUSTOM_DATE_FORMATS, JalaliMomentDateAdapter} from "./data/utils/jalali-
   ],
   providers: [
     provideNgxMask(),
-    {provide: DateAdapter, useClass: JalaliMomentDateAdapter},
-    {provide: MAT_DATE_FORMATS, useClass: CUSTOM_DATE_FORMATS}
+    { provide: DateAdapter, useClass: JalaliMomentDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
   ],
   bootstrap: [AppComponent]
 })
