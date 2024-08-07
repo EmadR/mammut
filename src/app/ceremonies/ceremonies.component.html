@@ -231,7 +231,7 @@
           <span class="icon material-symbols-outlined">cake</span>
 
           <div class="d-flex flex-column row-gap-2">
-            <p class="header">{{ selectedFeaturesList.join(' - ') }}</p>
+            <p class="header">{{ selectedFeaturesList.length > 0 ? selectedFeaturesList.join(' - ') : 'فاقد امکانات درخواستی' }}</p>
             <span class="sub-header">{{fileUploaded ? 'شامل فایل پیوست شده' : 'فاقد فایل پیوست'}}</span>
           </div>
 

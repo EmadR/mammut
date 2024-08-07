@@ -92,7 +92,7 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
     });
 
     this.thirdFormGroup = this._formBuilder.group({
-      feature: [[], Validators.required],
+      feature: [[]],
       description: [null, Validators.required],
     });
 
