@@ -15,6 +15,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSelectModule} from "@angular/material/select";
 import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
 import {JalaliMomentDateAdapter} from "./data/utils/jalali-date-adapter";
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 
 export const CUSTOM_DATE_FORMATS = {
   parse: {
@@ -51,7 +52,8 @@ export const CUSTOM_DATE_FORMATS = {
     BrowserAnimationsModule,
     MatSelectModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    NgxMaterialTimepickerModule
   ],
   providers: [
     provideNgxMask(),
