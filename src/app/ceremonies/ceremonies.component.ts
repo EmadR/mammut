@@ -1,20 +1,43 @@
 import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MatStepper} from "@angular/material/stepper";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatStepper, MatStepperModule} from "@angular/material/stepper";
 import {FeaturesDto} from "../data/dto/features.dto";
 import {FeaturesMock} from "../data/mock/features.mock";
 import {LevelDto} from "../data/dto/level.dto";
 import {LevelsMock} from "../data/mock/levels.mock";
 import {LocationsMock} from "../data/mock/locations.mock";
 import {LocationDto} from "../data/dto/location.dto";
-import {MatDatepickerInputEvent} from "@angular/material/datepicker";
+import {MatDatepickerInputEvent, MatDatepickerModule} from "@angular/material/datepicker";
 import {JalaliDatePipe} from "../share/pipes/jalali-date.pipe";
-import {NgxMaterialTimepickerTheme} from "ngx-material-timepicker";
+import {NgxMaterialTimepickerModule, NgxMaterialTimepickerTheme} from "ngx-material-timepicker";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatNativeDateModule} from "@angular/material/core";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatSelectModule} from "@angular/material/select";
 
 @Component({
   selector: 'app-ceremonies',
   templateUrl: './ceremonies.component.html',
-  styleUrls: ['./ceremonies.component.css']
+  styleUrls: ['./ceremonies.component.css'],
+  standalone: true,
+  imports: [
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    NgxMaterialTimepickerModule
+  ]
 })
 export class CeremoniesComponent implements OnInit, AfterViewInit {
   @ViewChild('stepper') stepper: MatStepper | undefined;

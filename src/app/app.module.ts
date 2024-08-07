@@ -3,19 +3,11 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {CeremoniesComponent} from './ceremonies/ceremonies.component';
-import {MatStepperModule} from "@angular/material/stepper";
-import {ReactiveFormsModule} from "@angular/forms";
-import {MatInputModule} from "@angular/material/input";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
-import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from "@angular/material/core";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatSelectModule} from "@angular/material/select";
-import {NgxMaskDirective, NgxMaskPipe, provideNgxMask} from "ngx-mask";
+
+import {DateAdapter, MAT_DATE_FORMATS} from "@angular/material/core";
+import {provideNgxMask} from "ngx-mask";
 import {JalaliMomentDateAdapter} from "./data/utils/jalali-date-adapter";
-import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import {CeremoniesComponent} from "./ceremonies/ceremonies.component";
 
 export const CUSTOM_DATE_FORMATS = {
   parse: {
@@ -32,33 +24,17 @@ export const CUSTOM_DATE_FORMATS = {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CeremoniesComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatButtonModule,
-    MatStepperModule,
-    MatButtonModule,
-    MatIconModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    BrowserAnimationsModule,
-    MatSelectModule,
-    NgxMaskDirective,
-    NgxMaskPipe,
-    NgxMaterialTimepickerModule
+    CeremoniesComponent
   ],
   providers: [
     provideNgxMask(),
-    { provide: DateAdapter, useClass: JalaliMomentDateAdapter },
-    { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
+    {provide: DateAdapter, useClass: JalaliMomentDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS},
   ],
   bootstrap: [AppComponent]
 })
