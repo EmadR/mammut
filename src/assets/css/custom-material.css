@@ -36,20 +36,6 @@
   display: none !important;
 }
 
-::ng-deep .manage-steps-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 90px;
-  background-color: var(--light-lavender);
-  padding: 23px 38px;
-  border-radius: 15px 15px 0 0;
-}
-
 ::ng-deep .center-align-label .mdc-notched-outline__notch {
   width: 100%;
   text-align: center;

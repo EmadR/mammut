@@ -249,7 +249,7 @@
 
 
 <!-- Manage Stepper Footer -->
-<div class="manage-steps-footer">
+<div class="manage-steps-footer" [class.shadow]="currentStep > totalSteps">
   <button *ngIf="currentStep > 1" class="btn previous-btn" mat-button (click)="previousStep()">مرحله قبل</button>
   <button *ngIf="totalSteps > currentStep" class="btn next-btn" mat-button (click)="nextStep()">مرحله بعد</button>
   <button *ngIf="totalSteps == currentStep" class="btn preview-btn" mat-button (click)="nextStep()">پیش نمایش</button>
