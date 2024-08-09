@@ -131,12 +131,16 @@
           <ng-template class="step-index" matStepperIcon="edit" let-index="index">
             {{ index + 1 }}
           </ng-template>
-          <p class="field-label">نام میهمان</p>
-          <mat-form-field appearance="fill" class="full-width"
-                          [ngClass]="{'error-field': isInvalid(fourthFormGroup, 'guestName')}">
-            <mat-label>لطفا نام میهمان را وارد کنید</mat-label>
-            <input matInput formControlName="guestName">
-          </mat-form-field>
+
+          <div formGroupName="guestNames">
+            <p class="field-label">نام میهمان</p>
+            <div *ngFor="let guestControl of getGuestControls(); let i = index">
+              <mat-form-field appearance="fill" class="full-width" [ngClass]="{'error-field': isInvalid(fourthFormGroup, 'guestNames.guestName' + i)}">
+                <mat-label>لطفا نام میهمان را وارد کنید</mat-label>
+                <input matInput [formControlName]="'guestName' + i" placeholder="نام میهمان">
+              </mat-form-field>
+            </div>
+          </div>
 
           <p class="field-label">نام میزبان</p>
           <mat-form-field appearance="fill" class="full-width"
@@ -200,8 +204,8 @@
             <p class="header">{{ fourthFormGroup.controls['guestCount'].value }} نفر میهمان</p>
 
             <div class="d-flex flex-column row-gap-2">
-              <div class="d-flex align-item-center gap-4">
-                <span class="sub-header">{{ fourthFormGroup.controls['guestName'].value }}</span>
+              <div *ngFor="let guestControlName of getGuestControls()" class="d-flex align-item-center gap-4">
+                <span class="sub-header">{{ fourthFormGroup.get('guestNames')?.get(guestControlName)?.value }}</span>
                 <span class="sub-header">{{ secondFormGroup.controls['level'].value }}</span>
               </div>
             </div>

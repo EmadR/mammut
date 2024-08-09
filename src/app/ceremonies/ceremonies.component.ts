@@ -1,5 +1,5 @@
 import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatStepper, MatStepperModule} from "@angular/material/stepper";
 import {FeaturesDto} from "../data/dto/features.dto";
 import {FeaturesMock} from "../data/mock/features.mock";
@@ -63,6 +63,7 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
 
   customTheme: NgxMaterialTimepickerTheme = {
     container: {
+      primaryFontFamily: 'iransans',
       bodyBackgroundColor: '#ffffff',
       buttonColor: '#fff'
     },
@@ -97,10 +98,14 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
     });
 
     this.fourthFormGroup = this._formBuilder.group({
-      guestName: [null, Validators.required],
+      guestNames: this._formBuilder.group({
+        guestName0: ['', Validators.required]  // نام اولین میهمان اجباری
+      }),
       hostName: [null, Validators.required],
       guestCount: [null, [Validators.required, Validators.min(1)]],
     });
+
+    this.onGuestCountChange();
   }
 
   ngAfterViewInit() {
@@ -112,7 +117,7 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
     if (this.isCurrentStepValid()) {
       this.stepper?.next();
       this.currentStep++;
-      if (this.stepper && (this.currentStep > this.stepper?.steps.length)) this.isFinalRegistration = true;
+      if (this.currentStep > this.totalSteps) this.isFinalRegistration = true;
     } else {
       this.markFormGroupTouched(this.getCurrentFormGroup());
     }
@@ -121,9 +126,14 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
   previousStep() {
     if (this.currentStep > this.totalSteps) {
       this.isFinalRegistration = false;
-      if (this.stepper) this.stepper.selectedIndex = this.totalSteps - 1;
-    } else this.stepper?.previous();
-    this.currentStep--;
+      if (this.stepper) {
+        this.stepper.selectedIndex = this.totalSteps - 1;
+        this.currentStep = this.totalSteps;
+      }
+    } else {
+      this.stepper?.previous();
+      this.currentStep--;
+    }
   }
 
   getCurrentFormGroup(): FormGroup {
@@ -146,7 +156,7 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
   }
 
   markFormGroupTouched(formGroup: FormGroup) {
-    (Object as any).values(formGroup.controls).forEach((control: any) => {
+    Object.values(formGroup.controls).forEach((control: any) => {
       control.markAsTouched();
       if (control.controls) {
         this.markFormGroupTouched(control);
@@ -156,7 +166,7 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
 
   isInvalid(formGroup: FormGroup, controlName: string): boolean {
     const control = formGroup.get(controlName);
-    return (control && control.invalid && (control.dirty || control.touched)) || false;
+    return control ? control.invalid && (control.dirty || control.touched) : false;
   }
 
   toggleFeature(feature: FeaturesDto): void {
@@ -184,5 +194,27 @@ export class CeremoniesComponent implements OnInit, AfterViewInit {
 
   onLocationChange(event: any) {
     this.location = this.locations.find(location => location.id == event.value);
+  }
+
+  onGuestCountChange() {
+    this.fourthFormGroup.get('guestCount')?.valueChanges.subscribe((count: number) => {
+      const guestNames = this.fourthFormGroup.get('guestNames') as FormGroup;
+
+      if (count && count > 0) {
+        while (Object.keys(guestNames.controls).length < count) {
+          guestNames.addControl(`guestName${Object.keys(guestNames.controls).length}`, new FormControl('', Validators.required));
+        }
+        while (Object.keys(guestNames.controls).length > count) {
+          guestNames.removeControl(`guestName${Object.keys(guestNames.controls).length - 1}`);
+        }
+      } else {
+        guestNames.reset();
+        guestNames.addControl('guestName0', new FormControl('', Validators.required));
+      }
+    });
+  }
+
+  getGuestControls() {
+    return Object.keys((this.fourthFormGroup.get('guestNames') as FormGroup).controls);
   }
 }
